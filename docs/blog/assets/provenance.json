@@ -1,0 +1,26 @@
+{
+  "run": "artifacts/evaluation",
+  "protocol": 2,
+  "poster_episode": "70c118cf37c2e168c6e3f5cc",
+  "multi_crop_episode": "2a6072bf1dc2f15de21c494d",
+  "dataset": "https://huggingface.co/datasets/XAI/vlmsareblind",
+  "diagram_reference": "https://newsletter.maartengrootendorst.com/p/a-visual-guide-to-gemma-4",
+  "architecture_diagram": "Original simplified redraw. Does not reuse the guide's image.",
+  "task_examples": {
+    "line_intersections": "0a34f90f40b19cd23f410b80",
+    "circled_letter": "08d78f2baa52c16551613cd8",
+    "subway_connections": "6223c1270c235fc44ac3c71a"
+  },
+  "crop_counts": {
+    "gpt-4o-2024-08-06": {
+      "1": 49,
+      "2": 3,
+      "3": 5,
+      "4": 3
+    },
+    "gpt-5.4-2026-03-05": {
+      "1": 59,
+      "2": 1
+    }
+  }
+}

@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>A closer look · Agentic VLM experiment</title><link rel="stylesheet" href="style.css">
+<script defer src="data.js"></script><script defer src="viewer.js"></script></head>
+<body><main><header><span class="eyebrow">AN EXPERIMENT IN VISUAL ATTENTION</span>
+<h1>Can a closer look<br>change the answer?</h1><p class="intro">Same image. Same question. Three ways to look.</p>
+<p id="scope" class="scope"></p></header>
+<section aria-label="Results overview"><div id="stats" class="stats"></div>
+<p class="muted">Accuracy includes unsuccessful episodes as incorrect. Small samples are exploratory.</p></section>
+<section class="experiment" aria-label="Episode replay">
+<div class="filters"><label>Model<select id="model"></select></label><label>Task<select id="task"></select></label>
+<label>Outcome<select id="outcome"><option value="all">All examples</option><option value="improvement">Crop improves over repeat</option><option value="regression">Crop regresses vs repeat</option><option value="failure">Crop incorrect / failed</option></select></label>
+<label>Example<select id="example"></select></label></div>
+<p id="empty" hidden>No examples match these filters.</p><div id="replay">
+<div class="question"><span class="eyebrow">THE QUESTION</span><h2 id="question"></h2><p id="truth"></p></div>
+<div class="playback"><button id="play" type="button">Play replay</button><label for="round">View <span id="round-label">1</span></label><input id="round" type="range" min="1" max="5" value="1"><span class="muted">Model-selected views</span></div>
+<div id="panels" class="panels"></div>
+<div class="downloads"><a id="png">Download comparison PNG</a><a id="gif">Download replay GIF</a></div>
+</div></section>
+<section class="method"><h2>What this compares</h2><p id="condition-description"><strong>One look</strong> answers from one full image. <strong>Look again</strong> can request the full image again. <strong>Choose a crop</strong> can select a region or revisit the full image. The two agents have up to five views, including the first, and may answer early.</p>
+<p>Crops use original-image coordinates and resize to 1,024 pixels on the longest side. All inputs use high image detail. Answers and dataset metadata are kept outside the agent's inputs. The replay shows recorded views and observable tool actions; it does not reconstruct hidden reasoning.</p>
+<p id="method-note"></p><p><a href="results.json">Full results JSON</a> · <a href="summary.csv">Summary CSV</a> · <a href="summary.png">Accuracy chart</a></p></section>
+<footer>Benchmark: <a href="https://vlmsareblind.github.io/">Vision Language Models Are Blind</a> · <a href="https://huggingface.co/datasets/XAI/vlmsareblind">XAI dataset (MIT)</a>. Rahmanzadehgervi, Bolton, Taesiri &amp; Nguyen, ACCV 2024.<br>Replay runs entirely from saved results. No API calls.</footer>
+</main></body></html>

@@ -1,0 +1,9 @@
+{
+  "models": ["gpt-5.4", "gpt-4o", "gpt-4o-mini"],
+  "split": "pilot",
+  "max_views": 5,
+  "max_output_tokens": 1200,
+  "max_action_errors": 2,
+  "detail": "high",
+  "crop_long_side": 1024
+}

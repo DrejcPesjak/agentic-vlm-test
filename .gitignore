@@ -218,3 +218,13 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Local experiment notes
+/idea.md
+/plan.md
+
+# Downloaded benchmark and resumable experiment artifacts
+/artifacts/
+/site-output/
+/.cache/
+/site-output-*/
