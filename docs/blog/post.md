@@ -54,7 +54,7 @@ This is what I mean by built wrong. Encoding the image once, without the questio
 
 ## Let the model look again
 
-A crop tool gives it one. The model looks at the full image, reads the question, and asks for a rectangle. Plain code cuts that rectangle out of the original pixels and hands it back. The same VLM then encodes the crop as a new image, in the same conversation.
+So I built the simplest fix I could think of, a crop tool. The model looks at the full image, reads the question, and asks for a rectangle. Plain code cuts that rectangle out of the original pixels and hands it back. The same VLM then encodes the crop as a new image, in the same conversation.
 
 ![Three steps show the model requesting a crop, the tool cutting pixels, and the next model call receiving the crop in the same chat](assets/crop-loop.png)
 
@@ -66,7 +66,7 @@ Cropping is just the simplest tool of this kind. An agent could also boost contr
 
 ## The experiment
 
-I used three tasks from [VLMs Are Blind](https://vlmsareblind.github.io), a benchmark of visual questions that are trivial for people and surprisingly hard for models. Each one has a short answer that can be checked against ground truth.
+To see whether this actually helps, I ran a small experiment. I used three tasks from [VLMs Are Blind](https://vlmsareblind.github.io), a benchmark of visual questions that are trivial for people and surprisingly hard for models. Each one has a short answer that can be checked against ground truth.
 
 - Count how many times a red line and a blue line cross
 - Name the letter inside a red circle

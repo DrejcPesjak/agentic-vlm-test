@@ -348,7 +348,7 @@ def build_preview():
         if block.startswith("# "):
             body.append('<p class="eyebrow">A SMALL EXPERIMENT IN VISUAL ATTENTION</p>')
             body.append("<h1>" + inline(block[2:]) + "</h1>")
-            body.append('<p class="meta">About 7 minutes · 60 images · 2 models</p>')
+            body.append('<p class="meta">by <a href="https://github.com/DrejcPesjak">Drejc Pesjak</a> · About 7 minutes · 60 images · 2 models</p>')
         elif block.startswith("## "):
             body.append("<h2>" + inline(block[3:]) + "</h2>")
         elif block.startswith("!["):
