@@ -229,3 +229,6 @@ __marimo__/
 /site-output/
 /.cache/
 /site-output-*/
+
+# Dark-theme figure copies for the external site
+# /docs/blog/assets-dark/
