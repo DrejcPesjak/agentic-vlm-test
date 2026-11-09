@@ -332,6 +332,7 @@ def build_figures():
 def inline(value):
     value = html.escape(value)
     value = re.sub(r"\[([^\]]+)\]\(([^)]+)\)", r'<a href="\2">\1</a>', value)
+    value = re.sub(r"`([^`]+)`", r"<code>\1</code>", value)
     value = re.sub(r"\*\*([^*]+)\*\*", r"<strong>\1</strong>", value)
     value = re.sub(r"\*([^*]+)\*", r"<em>\1</em>", value)
     return value
@@ -347,7 +348,7 @@ def build_preview():
         if block.startswith("# "):
             body.append('<p class="eyebrow">A SMALL EXPERIMENT IN VISUAL ATTENTION</p>')
             body.append("<h1>" + inline(block[2:]) + "</h1>")
-            body.append('<p class="meta">About 5 minutes · 60 images · 2 models</p>')
+            body.append('<p class="meta">About 7 minutes · 60 images · 2 models</p>')
         elif block.startswith("## "):
             body.append("<h2>" + inline(block[3:]) + "</h2>")
         elif block.startswith("!["):
@@ -358,6 +359,18 @@ def build_preview():
                 f'<figure><a href="{path}"><img src="{path}" '
                 f'alt="{html.escape(alt)}" loading="lazy"></a></figure>'
             )
+        elif block.startswith("> "):
+            rows = []
+            for line in block.splitlines():
+                match = re.fullmatch(r"> \*\*([^*]+)\*\* (.+)", line)
+                if match:
+                    who, said = match.groups()
+                    kind = {"You": "you", "Model": "model"}.get(who, "sees")
+                    rows.append(
+                        f'<div class="row {kind}"><span class="who">{html.escape(who)}</span>'
+                        f"<span>{inline(said)}</span></div>"
+                    )
+            body.append('<div class="chat">' + "".join(rows) + "</div>")
         elif block.startswith("- "):
             body.append(
                 "<ul>"
@@ -376,7 +389,13 @@ figure img{width:100%;display:block;border-radius:10px}.eyebrow,.meta{font-famil
 font-size:12px;letter-spacing:1.7px;color:#5d7276}.meta{letter-spacing:0;font-size:15px}
 figure+p:has(>em){font-size:16px;color:#5d7276;line-height:1.6}footer{margin-top:60px;
 border-top:1px solid #d5dfda;padding-top:20px;font:14px Arial,sans-serif}
-@media(max-width:700px){article{padding:30px 22px}p,li{font-size:18px}
+.chat{margin:26px 0;border:1px solid #d5dfda;border-radius:12px;background:#fff;overflow:hidden;
+font-family:Arial,sans-serif}.chat .row{display:flex;gap:18px;align-items:baseline;padding:14px 20px;
+font-size:17px;line-height:1.5}.chat .row+.row{border-top:1px solid #e6ece8}.chat .who{flex:0 0 150px;
+font-size:12px;letter-spacing:1.2px;text-transform:uppercase;color:#5d7276}.chat .model{font-weight:700}
+.chat .sees{background:#f1f6f3}code{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:15px;
+background:#dcebe6;border:1px solid #b9d3cb;border-radius:5px;padding:2px 7px;margin-right:3px}
+@media(max-width:700px){.chat .row{flex-direction:column;gap:4px}.chat .who{flex:none}article{padding:30px 22px}p,li{font-size:18px}
 figure{margin:25px -10px}h2{font-size:26px}h1{letter-spacing:-1px}}
 """
     result = (
@@ -386,7 +405,8 @@ figure{margin:25px -10px}h2{font-size:26px}h1{letter-spacing:-1px}}
         + css
         + "</style></head><body><article>"
         + "\n".join(body)
-        + '<footer><a href="post.md">Markdown source</a> · '
+        + '<footer><a href="https://github.com/DrejcPesjak/agentic-vlm-test">Code on GitHub</a> · '
+        '<a href="post.md">Markdown source</a> · '
         '<a href="assets/provenance.json">Figure sources</a></footer></article></body></html>'
     )
     (BLOG / "index.html").write_text(result)

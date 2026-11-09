@@ -2,7 +2,9 @@
 
 Open `index.html` for the reading preview. Edit `post.md` for the article.
 
-The article is about 1,200 words. The prose contains no em dashes, semicolons, or colons. It includes five original figures with PNG exports and editable SVG sources in `assets/`.
+The article is about 1,900 words. The prose contains no em dashes, semicolons, or colons. It includes five original figures with PNG exports and editable SVG sources in `assets/`.
+
+The two strawberry exchanges are written as blockquotes with a bold speaker label per line, and the preview renders them as chat cards. They are illustrations of the well-known failure, not recorded transcripts.
 
 The two example figures embed exact image payloads from the completed evaluation. The lead example compares separate GPT-5.4 runs on the same image. The three-crop example shows actual GPT-4o actions in order. Neither figure invents model reasoning or changes experimental pixels. Display scaling and the green region outline are presentation annotations.
 
