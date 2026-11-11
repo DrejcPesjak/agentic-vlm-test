@@ -401,6 +401,13 @@ figure{margin:25px -10px}h2{font-size:26px}h1{letter-spacing:-1px}}
     result = (
         '<!doctype html><html lang="en"><head><meta charset="utf-8">'
         '<meta name="viewport" content="width=device-width,initial-scale=1">'
+        '<meta name="description" content="A VLM compresses the image before it sees your question. Letting it crop and look again took GPT-5.4 from 73% to 90% on 60 benchmark images.">'
+        '<meta name="author" content="Drejc Pesjak">'
+        '<meta property="og:type" content="article">'
+        '<meta property="og:title" content="Why VLMs are built wrong and why agentic VLMs are the solution">'
+        '<meta property="og:description" content="A VLM compresses the image before it sees your question. Letting it crop and look again took GPT-5.4 from 73% to 90% on 60 benchmark images.">'
+        '<meta property="og:image" content="assets/emerald-sky.webp">'
+        '<meta name="twitter:card" content="summary_large_image">'
         "<title>Why VLMs are built wrong</title><style>"
         + css
         + "</style></head><body><article>"
